@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The input Element</h2>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br><br>
+</form>
+
+<br>
+
+<h2>The select Element</h2>
+
+<p>The select element defines a drop-down list:</p>
+
+<form action="/action_page.php">
+  <label for="department">Choose a department:</label>
+  <select id="department" name="cars">
+    <option value="development">Development</option>
+    <option value="support">Support</option>
+    <option value="testing">Testing</option>
+  </select>
+</form>
+<br>
+<h2>Pre-selected Option</h2>
+
+<p>You can preselect an option with the selected attribute:</p>
+
+<form action="/action_page.php">
+  <label for="department">Choose a Department:</label>
+  <select id="department" name="cars">
+     <option value="development">Development</option>
+    <option value="support"selected>Support</option>
+    <option value="testing">Testing</option>
+  </select>
+</form>
+<br>
+
+<h2>Visible Option Values</h2>
+
+<p>Use the size attribute to specify the number of visible values.</p>
+
+<form action="/action_page.php">
+  <label for="department">Choose a Department:</label>
+  <select id="department" name="cars" size="3">
+    <option value="development">Development</option>
+    <option value="support">Support</option>
+    <option value="testing">Testing</option>
+  </select><br><br>
+</form>
+<br>
+<h2>Allow Multiple Selections</h2>
+
+<p>Use the multiple attribute to allow the user to select more than one value.</p>
+
+<form action="/action_page.php">
+  <label for="department">Choose a Department:</label>
+  <select id="department" name="cars" size="4" multiple>
+    <option value="development">Development</option>
+    <option value="support">Support</option>
+    <option value="testing">Testing</option>
+  </select><br><br>
+</form>
+
+<p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+
+<br>
+<h2>Textarea</h2>
+<p>The textarea element defines a multi-line input field.</p>
+
+<form action="/action_page.php">
+  <textarea name="message" rows="10" cols="30">The cat was playing in the garden.</textarea>
+  <br><br>
+</form>
+
+</body>
+</html>

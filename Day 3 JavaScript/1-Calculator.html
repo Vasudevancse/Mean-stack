@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calulator</title>
+</head>
+<body>
+    <h1 id="hid"></h1>
+    
+    <input id="num1" type="number" placeholder= "Enter the 1st number">
+    <br>
+    <br>
+    <input id="opr" type="text" placeholder= "Enter the operator">
+    <br>
+    <br>
+    <input id="num2" type="number" placeholder= "Enter the 2nd number">
+    <br>
+    <br>
+     <h2 id="result">Result Of Operation is </h2>
+    <br>
+    <br>
+ 
+  
+    <button onclick="changeMe()">Calculate</button>
+    <script>
+       
+        document.getElementById("hid").innerHTML="Simple Calculator";
+        document.getElementById("hid").style.color='lightgreen';
+        
+        function changeMe(){
+            num1 = document.getElementById("num1").value;
+            num2 = document.getElementById("num2").value;
+            operator = document.getElementById("opr").value;
+            
+            if (operator == '+')
+            {
+             result=num1+num2;
+            }
+            else if (operator == '-')
+            {
+            
+             result=num1-num2;
+            }
+            else if (operator == '*')
+            {
+            
+             result=num1*num2;
+            }
+            else if(operator == '/')
+            {
+            
+             result=num1/num2;
+            }
+            else
+            {
+            resut = "invalid";
+            }
+            
+            document.getElementById("result").innerHTML="Result Of Operation is "+result;
+
+            
+        }
+        
+        
+    </script>
+    
+</body>
+</html>

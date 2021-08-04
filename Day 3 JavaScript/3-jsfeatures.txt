@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hid"></h1>
+    <button onclick="changeMe()">Change</button>
+    <script>
+        //dom manipulation
+        document.getElementById("hid").innerHTML="Welcome to IQVIA to learn Java Script";
+        document.getElementById("hid").style.color='lightgreen';
+ 
+        function changeMe(){
+            document.getElementById("hid").style.backgroundColor='yellow';
+            document.getElementById("hid").style.color='red';
+        }
+    </script>
+    
+</body>
+</html>

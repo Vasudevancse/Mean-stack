@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment - End to End</title>
+</head>
+<body>
+    <h1 style="color:red;font-weight:bold;background-color:lightgreen">Weather Information</h1>
+    
+    
+    <Label>Enter Location</label>
+    <input type="Text" id="location">
+    <br><br>
+    
+    <button id="submit" onclick="getWeatherfunction()">Submit</button>
+    <table id="result">
+    </table>
+    <script>
+        var weatherdetails= [];
+        function getWeatherfunction(){
+        
+        	var location = document.getElementById("location").value
+            console.log("Location is : ", location);
+		
+        url = 'https://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=64aa776fc770b99fba7e0ae727b9d291&units=metric'
+        
+        console.log("Url is : ", url);
+        
+        getWeatherinfo();
+		
+	}
+
+	function getWeatherinfo(){
+            fetch(url)
+            .then(response=>response.json())
+            .then(json=>displayData(json))
+        }
+
+	function displayData(jsondata){
+            weatherdetails = jsondata;
+            console.log("displayData : ",weatherdetails);
+            
+            var data="";
+            
+            data = "<br><b>City</b> : " + weatherdetails.name + "<br>";
+           
+            data = data + "<br><b>Coord</b> : " + "lon - " + weatherdetails.coord.lon + " , lat - " + weatherdetails.coord.lat + "<br>";
+            
+            data = data + "<br><b>Temp</b> : " + weatherdetails.main.temp + "<br>";
+            
+            data = data + "<br><b>Pressure</b> : " + weatherdetails.main.pressure + "<br>";
+            
+            data = data + "<br><b>Humidity</b> : " + weatherdetails.main.humidity + "<br>";
+            
+            data = data + "<br><b>Wind</b> : " + weatherdetails.wind.speed + "<br>";
+            
+            document.getElementById("result").innerHTML=data;
+         
+         }
+        
+         
+               
+    </script>
+</body>
+</html>

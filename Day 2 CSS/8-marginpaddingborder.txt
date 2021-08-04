@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+ 
+        /** block level elements div,p,h1..h6**/
+ 
+       div{
+           height: 100px;
+           width: 50%;
+           border: 2px solid red;
+           margin: 20px;
+           padding: 30px;
+       } 
+ 
+       p{
+        height: 150px;
+        border: 2px dotted green;
+        text-align: center;
+       }
+ 
+       h2{
+           height: 200px;
+           margin:auto;
+       }
+    </style>
+</head>
+<body>
+    <h1>Border,Margin and padding</h1>
+ 
+    <div>IQVIA</div>
+ 
+    <p>IQVIA test</p>
+    <h2>IQVIA test h2</h2>
+</body>
+</html>

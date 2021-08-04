@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB Bill Calculator</title>
+</head>
+<body>
+    <h1>EB Bill Calculator</h1>
+    <label>Enter Units</label>
+<input type="text" name="units" id="units" value=""/>
+<br>
+<br>
+<input type="submit" name="submit1" value="submit" onclick="submitamount()"/>
+
+<p id="result"></p>
+    <script>
+    
+    function submitamount()
+{
+	var u = document.getElementById ('units').value;
+    
+    bill = 0;
+    if(u>0 && u<=100)
+    {
+    	bill = u * 1;
+    }
+    if (u>100 && u<=200)
+    {
+    	bill = ((u-100) * 2) + (1*100);        
+    }
+    if (u>200 && u<=300)
+    {
+    	bill = ((u-200) * 3) + (1*100)+(2*100);        
+    }
+    if (u>300)
+    {
+    	bill = bill + ((u-300) * 5) + (1*100)+(2*100)+(3*100);     
+    }
+    
+    document.getElementById('result').innerHTML = "Bill amount: "+bill;
+}
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First JavaScript</h2>
+
+<button id="demo" Onclick="myFunction()">click</button>
+
+<p id="res"></p>
+<script>
+	function myFunction() {
+	document.getElementById("res").innerHTML = Date();
+    }
+    
+</script>
+
+
+
+</body>
+</html> 

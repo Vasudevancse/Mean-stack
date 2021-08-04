@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>COWIN Sign-In</h2>
+  <form >
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" class="form-control" id="name" placeholder="Enter Name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="aadhar">Aadhar Number:</label>
+      <input type="aadhar" class="form-control" id="aadhar" placeholder="Enter Aadhar Number" name="aadhar">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile Number:</label>
+      <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile Number" name="mobile">
+    </div>
+    <div class="form-group">
+      <label for="otp">OTP:</label>
+      <input type="otp" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+    </div>
+    
+    <br>
+    <br>
+<div
+  <button type="submit" class="btn btn-success">
+<a href="cowinshowdata.html">Submit</a>
+</button>
+</div>
+    
+  </form>
+</div>
+
+</body>
+</html>

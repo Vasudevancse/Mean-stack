@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<img id="imgid" src="images\pic_bulboff.gif">
+<button id="onbtn" onclick="switchon()">On</button>
+<button id="offbtn" onclick="switchoff()">Off</button>
+<script>
+function switchon(){
+document.getElementById("onbtn").disabled = true;
+document.getElementById("offbtn").disabled = false;
+document.getElementById("imgid").src="images\\pic_bulbon.gif";
+}
+function switchoff(){
+document.getElementById("onbtn").disabled = false;
+document.getElementById("offbtn").disabled = true;
+document.getElementById("imgid").src="images\\pic_bulboff.gif";
+}
+</script>
+</body>
+</html>
