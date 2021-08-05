@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <style>
+
+        #container{
+            margin:auto;
+            width:80%;
+        }
+
+        #addtodos{
+            margin:auto;
+            width:80%;
+        }
+        
+   table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+	background-color: lightgreen;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+    </style>
+</head>
+<body onload="getUsersDetail()">
+
+    <div id="container">
+        <div>
+            <h1 style="text-align: center;color:red;background-color:lightgreen">Users</h1>
+        </div>
+        <div id="adduser">
+			
+            
+            
+            <h1 style="color:blue">User's List</h1>
+            
+            <form class="form-horizontal">
+            
+            <div class="form-group">
+      <label class="control-label col-sm-2" for="id" >ID:</label>
+      <div class="col-sm-10">
+      <input type="id" class="form-control" id="id" placeholder="Id" name="id" disabled>
+      </div>
+    </div>
+            <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-10">
+      <input type="name" class="form-control" id="name" placeholder="Enter Name" name="name">
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="city">City:</label>
+      <div class="col-sm-10">
+      <input type="city" class="form-control" id="city" placeholder="Enter City" name="city">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="phone">Phone:</label>
+      <div class="col-sm-10">
+      <input type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="company">Company:</label>
+      <div class="col-sm-10">
+      <input type="company" class="form-control" id="company" placeholder="Enter Company" name="company">
+      </div>
+    </div>
+            
+            
+            </form>
+
+	    <button class="btn btn-info" id="add" onclick="addUsers()">Add Users</button>
+            <button class="btn btn-info" id="update" onclick="updateUsersDetail()" disabled>Update Users</button><br><br><br>
+            
+            
+        	<div>
+        	<label for="search">Search Users:</label>
+            <input type="Text" id="search" placeholder="Enter username" name="search">
+            <button id="searchuser" onclick="searchUsers()">Get Users</button><br><br>
+      	</div>
+        	
+        </div>
+        
+        <div>
+            <table id='result'></table>
+        </div>
+    </div>
+    <script>
+    
+        var users=[];
+        document.getElementById("update").disabled = true;
+        document.getElementById("add").disabled = false;
+            
+        function getUsersDetail(){
+            fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response=>response.json())
+            //.then(json=>console.log(json))
+            .then(json=>showUsers(json))    
+        }
+        
+        function showUsers(data){
+            users=data;           
+            var displayuserdata=`<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Phone</th><th>Company</th><th>Update</th><th>Delete</th></tr>`;
+            for (let i=0;i<users.length;i++){
+                displayuserdata= displayuserdata +`<tr><td>${users[i].id}</td><td>${users[i].name}</td><td>${users[i].email}</td><td>${users[i].address.city}</td><td>${users[i].phone}</td><td>${users[i].company.name}</td><td><button id=${users[i].id} onclick="updateUsers(${users[i].id})">Update</button></td><td><button id=${users[i].id} onclick="deleteUsers(${users[i].id})">Delete</button></tr>`;
+            }
+            document.getElementById('result').innerHTML=displayuserdata;
+        }
+
+
+		function updateUsers(id)
+        {
+        	console.log("Id : ", id);
+            updateuserdata = '';
+            for(let i=0;i<users.length;i++)
+            {
+            	if (users[i].id == id)
+                    updateuserdata = users[i];
+            }
+            console.log("Update Id : ", updateuserdata.id);
+            document.getElementById("id").value = updateuserdata.id;
+            document.getElementById("name").value = updateuserdata.name;
+            document.getElementById("email").value = updateuserdata.email;
+            document.getElementById("city").value = updateuserdata.address.city;
+            document.getElementById("phone").value = updateuserdata.phone;
+            document.getElementById("company").value = updateuserdata.company.name;
+            document.getElementById("update").disabled = false;
+            document.getElementById("add").disabled = true;
+        }
+        
+        function deleteUsers(id)
+        {
+        	console.log("Id : ", id);
+            deleteuserdata = '';
+            for(i=0;i<users.length;i++)
+            {
+            	if (users[i].id == id)
+                	deleteuserdata = i;
+            }
+            
+            if (deleteuserdata>=0)
+            {
+            	console.log('delete user data :',deleteuserdata);
+                users.splice(deleteuserdata,1);
+            }
+            
+            showUsers(users);
+            
+        }
+        
+        
+        
+        function addUsers(){
+        	
+            id = users.length + 1;
+            console.log('id : ',id);
+            name = document.getElementById("name").value;
+        	email = document.getElementById("email").value;
+            city = document.getElementById("city").value;
+            phone = document.getElementById("phone").value;
+            company = document.getElementById("company").value;
+            
+            fetch('https://jsonplaceholder.typicode.com/users',            
+            {
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id,
+                    name: name,
+                    email:email,
+                    address:{city:city},
+                    phone:phone,
+                    company:{name:company}
+                })
+            }            
+            )
+            .then(response=>response.json())
+            //.then(json=>console.log('add ',json))
+            .then(json=>addUsersData(json))
+                        
+        }
+
+	function addUsersData(data) {
+        		users.unshift(data);
+            showUsers(users);
+        }
+        
+        function searchUsers()
+        {
+            username = document.getElementById("search").value.toLowerCase();
+            console.log("search user :", username);
+            
+           
+            users = users.filter(x => x.name.toLowerCase() == username)
+            
+			showUsers(users);
+            
+	    
+        }
+        
+        function updateUsersDetail(){
+        	id=document.getElementById('id').value;
+            name=document.getElementById('name').value;
+            email=document.getElementById('email').value;
+            city=document.getElementById('city').value;
+            phone=document.getElementById('phone').value;
+            company=document.getElementById('company').value;
+        	
+            url='https://jsonplaceholder.typicode.com/users/' + id;
+            console.log("URL :", url);
+            
+             fetch(url,            
+            {
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+                method: 'PUT',
+                body: JSON.stringify({
+                	id: id,
+                    name: name,
+                    email:email,
+                    address:{city:city},
+                    phone:phone,
+                    company:{name:company}
+                })
+            }            
+            )
+            .then(response=>response.json())
+            .then(json=>
+            {
+                console.log('updated',json);
+                for (i=0;i<users.length;i++)
+                {
+                    if (users[i].id==id)
+                    {
+                        updatedUsers={
+                            id: id,
+                    		name: name,
+                    		email:email,
+                    		address:{city:city},
+                    		phone:phone,
+                    		company:{name:company}
+                        };
+                        console.log('updated users :: ',updatedUsers);
+                        users[i]=updatedUsers;
+                        showUsers(users);
+                    }            
+                }
+            }          
+            
+            )
+        
+        }
+        
+        
+        
+       
+        
+       
+        
+    </script>
+    
+</body>
+</html>

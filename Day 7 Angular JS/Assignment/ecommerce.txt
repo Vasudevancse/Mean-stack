@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>eCommerce</title>
+</head>
+
+<body ng-app="eCommerceApp" ng-controller="eCommerceController">
+
+	<h1 style="text-align:center;color:blue">eCommerce</h1>
+    
+    <label>Enter Mobile Number : </label>
+    <input type="text" name="mobile" id="mobile" ng-model="mobile"><br><br>
+    
+    <label>Enter purchase amount : </label>
+    <input type="text" name="purchase" id="purchase" ng-model="purchase"><br><br>
+    
+   <!-- <div ng-model="card">
+    	<label>Do you have card : </label>
+    	<input type="radio" id="card" ng-model="card" name="card" value="Yes">Yes
+    	<input type="radio" id="card" ng-model="card" name="card" value="No" checked>No<br><br>
+  	</div> -->
+    <label>Do you have card : </label>
+     <select name="card" id="card" ng-model="card">
+  		<option value="yes">Yes</option>
+  		<option value="no">No</option>
+    </select><br><br> 
+    <!-- <input type="text" name="card" id="card" ng-model="card"><br><br> -->
+    
+    <button ng-click="getBill()">Get Bill Details</button>
+   <!-- <label><strong>Bill : </strong></label>
+    <input type="text" name="bill" id="bill" ng-model="purchase"><br><br> -->
+	<br><br><br>
+	<label>{{result}}</label>
+    
+    <script>
+    
+    	var app=angular.module("eCommerceApp",[]);
+        
+        app.controller("eCommerceController",function($scope){
+        
+        	$scope.getBill=function(){
+            
+            	$scope.result="";
+                discountamt=0;
+                discountpercent=0;
+                additionaldiscount=0;
+                if ($scope.card == "yes")
+                    	additionaldiscount = 5;
+                    
+            	if($scope.purchase < 10000)
+                {
+                	discountpercent = 10;                   
+                } 
+                else if ($scope.purchase >= 10000 && $scope.purchase < 20000)
+                {
+                	discountpercent = 20;
+                }
+                else if ($scope.purchase >= 20000 && $scope.purchase < 30000)
+                {
+                	discountpercent = 30;
+                }
+                else if ($scope.purchase >= 30000)
+                {
+                	discountpercent = 35;                	
+                }
+                
+                finaldiscount=discountpercent+additionaldiscount;
+                discountamt = ($scope.purchase)*(finaldiscount/100);
+                amount = $scope.purchase-discountamt; 
+                
+                $scope.result = "Purchase Amount : " + $scope.purchase + " , " +
+                	  			"Discount Amount : " + discountamt + " , " +
+                     		    "Bill to Pay : " + amount
+                
+            	return $scope.result;
+            };
+        });
+        
+        
+    
+    </script>
+
+
+</body>
+
+</html>

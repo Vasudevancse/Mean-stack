@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Display</title>
+ 
+<style>
+    #container{
+        width: 100%;
+        background-color: lightblue;
+        height: 900px;
+    }
+ 
+    #row{
+        width: 100%;
+        height: 300px;
+        background-color: lightgrey;
+        
+ 
+    }
+    
+    h2{
+           height: 40px;
+           border: 2px solid red;
+           text-transform: uppercase;
+           background-color: red;
+           color: white;
+           padding : 20px;
+           text-align: center;
+       } 
+ 
+    /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  div {
+      width:100%;
+      background-color:red;
+      height: 300px;
+      border: 1px solid red;
+     margin: 2px;
+    padding: 2px;
+        display: inline-block;
+    
+    
+    }
+}
+ 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    div {
+        width:45%;
+        background-color:green;
+        height: 300px;
+        border: 1px solid red;
+        margin: auto;
+        padding: 2px;
+        display: inline-block;
+    }
+}
+ 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    div {
+        width:23%;
+        background-color:blue;
+        height: 300px;
+        border: 1px solid red;
+        margin: auto;
+        padding: 2px;
+        display: inline-block;
+    }
+} 
+ 
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    div {
+        width:20%;
+        background-color:yellow;
+        height: 300px;
+        border: 1px solid red;
+        margin: auto;
+        padding: 2px;
+        display: inline-block;
+    }
+} 
+ 
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    div {
+        width:20%;
+        background-color:orange;
+        height: 300px;
+        border: 1px solid red;
+        margin: 2px;
+        padding: 2px;
+        display: inline-block;
+    }
+    
+    .row-1 {Height: 25%;}
+    
+  
+}
+ 
+</style>
+</head>
+<body>
+
+	<h2>Every day great deals on relience digital</h2>
+    <div id="container">
+        <!-- Row 1-->
+        <div id="row">
+            <div>
+                	<h1>
+                		<img src="laptop.jpg" width="100%" height="80%">
+                	</h1>
+                
+            </div>
+            
+            <div>
+                	
+                    
+                   
+                    <h1>
+                		<img src="laptop.jpg" width="100%" height="80%">
+                	</h1>
+                   
+                
+            </div>
+            
+            <div>
+                	<h1>
+                		<img src="laptop.jpg" width="100%" height="80%">
+                	</h1>
+                
+            </div>
+           
+       
+         
+        </div>
+ 
+    </div>
+        </body>
+</html>

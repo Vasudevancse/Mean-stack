@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL League</title>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+</head>
+<body>
+ 
+    <h1>IPL League</h1>
+ 	
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name"><br><br>
+    
+    <label for="team">Team:</label>
+    <input type="text" name="team" id="team"><br><br>
+    
+    <label for="season">Season:</label>
+    <input type="text" name="season" id="season"><br><br>
+    
+    <label for="runs">Runs:</label>
+    <input type="text" name="runs" id="runs"><br><br>
+    
+    <label for="wickets">Wickets:</label>
+    <input type="text" name="wickets" id="wickets"><br><br>
+    
+    <button onclick="submitIPL()">Submit</button>
+
+<button onclick="leaderIPL()">Leader</button>
+    
+    <table id="result">
+    
+    
+    
+<tr>
+    <th>Name</th>
+	<th>Team</th>
+	<th>Season</th>
+	<th>Runs</th>
+	<th>Wickets</th>
+  </tr>
+    </table>
+    
+    <p id="leader"></p>
+    
+    <script>
+ 
+    iplList=[];
+ 
+    function IPLSeason (name,team,season,runs,wickets){
+        this.name = name;
+        this.team = team;
+        this.season=season;
+        this.runs=runs;
+        this.wickets = wickets;
+        }
+    
+    
+      function displayIPL(){
+        var data = '';    
+        for (var i=0;i<iplList.length;i++){
+            data = data + '<tr>';
+            data=data+'<td>'+iplList[i].name+'</td>'+'<td>'+iplList[i].team+'</td>' +'<td>'+iplList[i].season+'</td>'+'<td>'+iplList[i].runs+'</td>'+'<td>'+iplList[i].wickets+'</td>';    
+            data = data+'</tr>';
+        }
+        document.getElementById('result').innerHTML=data;
+    } 
+ 
+        function submitIPL(){
+            name = document.getElementById("name").value;
+            console.log('name ',name);
+            team = document.getElementById("team").value;
+            console.log('team ',team);
+            season = document.getElementById("season").value;
+            console.log('season ',season);
+            runs = document.getElementById("runs").value;
+            console.log('runs ',runs);
+            wickets = document.getElementById("wickets").value;
+            console.log('wickets ',wickets);
+            ipl = new IPLSeason(name,team,season,runs,wickets);
+            iplList.push(ipl);
+            console.log('iplList ',iplList);
+            displayIPL();
+        }
+
+function leaderIPL(){
+		console.log('iplList ',iplList);
+	    var leaderdata = '';
+        leaderdata = 'Maximum runs :: ' + Math.max(iplList[3]);
+
+        document.getElementById('leader').innerHTML=leaderdata;
+
+}
+ 
+    </script>
+</body>
+</html>

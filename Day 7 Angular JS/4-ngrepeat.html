@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>ng-repeat</title>
+</head>
+<body ng-app="" ng-init="employees=[
+	{empcode:1001, name:'Vasu', place:'Chennai', department:'IT'},
+    {empcode:1002, name:'Raja', place:'Bengalore', department:'Support'},
+    {empcode:1003, name:'Peter', place:'Delhi', department:'IT'}
+
+]">
+    <h2>ng-Repeat</h2>
+  <!--  <ol>
+    	<li ng-repeat="emp in employees">{{emp.empcode}} - {{emp.name}} - {{emp.place}} - {{emp.department}}</li>
+    </ol> -->
+    
+ 	<table>
+    <tr>
+    	<th>Emp Code</th>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Department</th>
+      </tr>
+    
+    <tr ng-repeat="emp in employees">
+    	<td>{{emp.empcode}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.place}}</td>
+        <td>{{emp.department}}</td>
+     </tr>
+     </table>
+    
+    
+    	
+    
+    
+</body>
+</html>

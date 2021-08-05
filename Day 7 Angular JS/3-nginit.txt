@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>ng-init</title>
+</head>
+<body>
+    
+    <h1>ng-init</h1>
+    
+    <!-- <div ng-app="" ng-init="name='Vasu';place='Chennai';age=30">
+    	<h2>Name : {{name}}</h2>
+        <h2>Place : {{place}}</h2>
+        <h2>Age : {{age}}</h2>
+    </div> -->
+    
+    
+    
+
+    <div ng-app="" ng-init="person={name:'Vasu',place:'Chennai',age:30}">
+    	<h2>Name : {{person.name}}</h2>
+        <h2>Place : {{person.place}}</h2>
+        <h2>Age : {{person.age}}</h2>
+    </div>
+    
+</body>
+</html>
