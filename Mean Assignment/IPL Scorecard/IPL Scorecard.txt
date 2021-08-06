@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IPL Scores Dashboard</title>
+  <link href="dynamicstyle.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  
+  <script src="dynamicscript.js"></script>
+    
+</head>
+<body ng-app="nIPLScoresModule">
+  <div ng-controller="nIPLScoresController">
+  <h2>IPL Scores Dashboard</h2>
+  
+  <button ng-click="propertyName = null; reverse = false">Click to set the data unsorted</button>
+  <hr/>
+  <table class="iplscores">
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Season</th>
+      <th>
+        <button ng-click="sortBy('runs')">Runs</button>
+        <span class="sortorder" ng-show="propertyName === 'runs'" ng-class="{reverse: reverse}"></span>
+      </th>
+      <th>
+        <button ng-click="sortBy('wickets')">Wickets</button>
+        <span class="sortorder" ng-show="propertyName === 'wickets'" ng-class="{reverse: reverse}"></span>
+      </th>
+    </tr>
+    <tr ng-repeat="ipl in iplscores | orderBy:propertyName:reverse">
+      <td>{{ipl.player}}</td>
+      <td>{{ipl.team}}</td>
+      <td>{{ipl.season}}</td>
+      <td>{{ipl.runs}}</td>
+      <td>{{ipl.wickets}}</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+ 

@@ -1,0 +1,21 @@
+.iplscores {
+    border-collapse: collapse;
+  }
+  
+  .iplscores th {
+    border-bottom: 1px solid;
+  }
+  .iplscores td, .iplscores th {
+    border-left: 1px solid;
+    padding: 5px 10px;
+  }
+  .iplscores td:first-child, .iplscores th:first-child {
+    border-left: none;
+  }
+  
+  .sortorder:after {
+    content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+  }
+  .sortorder.reverse:after {
+    content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+  }

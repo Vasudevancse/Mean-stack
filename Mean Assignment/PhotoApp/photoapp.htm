@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <script data-require="bootstrap@4.0.5" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
+    <script data-require="angularjs@1.6.2" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+   <!-- <link rel="stylesheet" href="style.css" />-->
+    <script src="angularscript.js"></script>
+  </head>
+
+  <body class="container" ng-app="myApp" ng-controller="photoController" ng-cloak>
+    
+    <h1 style="text-align:center;background-color:blue;color:white">Photo App</h1>
+    
+    <!--Form-->
+    <form ng-submit="addPhoto()">
+      <h4 style="color:red">Add Photo</h4>
+      <div class="form-group" ng-show="albumId">
+        <label class="control-label col-md-2">Album ID:</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="photo.albumId" placeholder="Album Id.." />
+        </div>
+      </div>
+      <div class="form-group" ng-show="id">
+        <label class="control-label col-md-2">ID:</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="photo.id" placeholder="Id.." />
+        </div>
+      </div>
+      <div class="form-group" ng-show="title">
+        <label class="control-label col-md-2">Title:</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="photo.title" placeholder="title.." />
+        </div>
+      </div>
+      <div class="form-group" ng-show="url">
+        <label class="control-label col-md-2">URL:</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="photo.url" placeholder="url.." />
+        </div>
+      </div>
+      <div class="form-group" ng-show="thumbnailUrl">
+        <label class="control-label col-md-2">Thumbnail URL:</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="photo.thumbnailUrl" placeholder="Thumbnail url.." />
+        </div>
+      </div>
+      <div class="col-md-offset-2 col-md-10">
+      <input type="submit" value="submit" class="btn btn-success btn-sm" ng-show="submit" />    
+      <input type="button" value="update" ng-click="updatePhoto()" class="btn btn-success btn-sm" ng-show="update" />    
+      <input type="button" value="cancel" ng-click="cancelUpdate()" class="btn btn-danger btn-sm" ng-show="cancel" />    
+      </div>
+    </form>
+    <!--End Form-->
+    
+    <!--Photo App Details List-->
+    <br>
+    <h4 style="color:red">Photo App Details List</h4>
+    <label>Search by Title : <input ng-model="search.title"></label><br>
+	
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Album ID</td>
+          <td>ID</td>
+          <td>Title</td>
+          <td>URL</td>
+          <td>Thumbnail URL</td>
+	  <td>Action Commands</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="photo in photos | filter:search">	  
+          <td>
+            {{photo.albumId}}
+          </td>
+          <td>
+            {{photo.id}}
+          </td>
+           <td>
+            {{photo.title}}
+          </td>
+           <td>
+            <img src={{photo.url}} width="20px" Height="20px"/>
+          </td>
+           <td>
+            <img src={{photo.thumbnailUrl}} width="20px" Height="20px"/>
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm" ng-click="editPhoto(photo)">Update</button>
+            <button class="btn btn-danger btn-sm" ng-click="deletePhoto(photo)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+ 
+    </table>
+	<br>
+	<div class="col-md-offset-10 col-md-4">
+		<input type="button" value="Prev" ng-click="getPrev()" class="btn btn-success btn-sm" ng-show="Prev" />    
+        	<input type="button" value="Next" ng-click="getNext()" class="btn btn-success btn-sm" ng-show="Next" />
+        </div><br>
+  </body>
+
+</html>
