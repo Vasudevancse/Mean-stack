@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Welcome to Covidcare Management System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+    	
+        h2{
+        	background-color:red;
+            color:white;
+            text-align:center;
+        }
+        
+        #main{
+            background-color: lightgray;
+            color: black;
+        }
+        
+        #green{
+            background-color:greenyellow;
+            color:green;
+        }
+        #blue{
+            background-color:lightskyblue;
+            color:blue;
+        }
+        
+    </style>
+</head>
+<body ng-app="covidcareApp">
+<h2>Welcome to Covidcare Management System</h2>
+<br>
+<div>
+<button type="button" class="btn btn-warning"><a href="#!signup">Sign Up</a></button>
+<button type="button" class="btn btn-warning"><a href="#!facilities">Facilities</a></button>
+<button type="button" class="btn btn-warning"><a href="#!feedback">Feedback</a></button>
+<button type="button" class="btn btn-warning"><a href="#!existingpatients">Existing Patients</a></button>
+<button type="button" class="btn btn-warning"><a href="#!locateus">Locate Us</a></button>
+</div>
+<br>
+<br>
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("covidcareApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        //templateUrl : "main.htm"
+        template:"<div id='main'>I am the main page</div>"
+    })
+    .when("/signup", {
+        template:`<form class="form-inline" action="/action_page.php">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="form-control" placeholder="Enter the name"><br><br>
+          </form>
+          <label for="mobile">Mobile:</label>
+          <input type="text" id="mobile" class="form-control" placeholder="Enter the mobile"><br><br>
+          <label for="age">Age:</label>
+          <input type="text" id="age" class="form-control" placeholder="Enter the age"><br><br>
+         <label for="gender">Gender:</label>
+   <input type="radio" id="gender" name="gender" seleted value="Male" checked> Male
+  <input type="radio" id="gender" name="gender" value="Female"> Female<br><br>
+  		 <label for="location">Location:</label>
+         <select id="location" name="city">
+    <option value="Chennai" selected>Chennai</option>
+    <option value="Banglore">Banglore</option>
+    <option value="Mumbai">Mumbai</option>
+  </select><br><br>
+  <label for="aadhar">Aadhar:</label>
+          <input type="text" id="aadhar" class="form-control" placeholder="Enter aadhar number"><br><br>
+          <label for="date">Date and Time:</label>
+          <input type="date" id="date"><br><br>
+          <input type="submit" ng-click=signup() value="Sign Up">
+        </div>
+        </form>`
+    })
+    .when("/facilities", {
+	template:"<div id='green'>I am the green page</div>"
+    })
+    .when("/blue", {
+        //templateUrl : "blue.htm"
+	template:"<div id='blue'>I am the blue page</div>"
+    });
+});
+</script>
+
+
+</body>
+</html>

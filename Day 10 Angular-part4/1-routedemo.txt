@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <style>
+        #main{
+            background-color: lightgray;
+            color: black;
+        }
+        #red{
+            background-color:cadetblue;
+            color:red;
+        }
+        #green{
+            background-color:greenyellow;
+            color:green;
+        }
+        #blue{
+            background-color:lightskyblue;
+            color:blue;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+<p><a href="#/!">Main</a></p>
+<a href="#!red">Red</a>
+<a href="#!green">Green</a>
+<a href="#!blue">Blue</a>
+<div ng-view></div>
+<script>
+//var app = angular.module("myApp",[]);
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        //templateUrl : "main.htm"
+        template:"<div id='main'>I am the main page</div>"
+    })
+    .when("/red", {
+        //templateUrl : "red.htm"
+        template:"<div id='red'>I am the red page</div>"
+    })
+    .when("/green", {
+        //templateUrl : "green.htm"
+	template:"<div id='green'>I am the green page</div>"
+    })
+    .when("/blue", {
+        //templateUrl : "blue.htm"
+	template:"<div id='blue'>I am the blue page</div>"
+    });
+});
+</script>
+<p>Click on the links to navigate to "red.htm", "green.htm", "blue.htm", or back to "main.htm"</p>
+</body>
+</html>

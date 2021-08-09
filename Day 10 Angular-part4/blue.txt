@@ -1,0 +1,1 @@
+<div id="blue">I am the blue page</div>

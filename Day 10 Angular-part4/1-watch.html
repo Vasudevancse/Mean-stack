@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=k1gM9bbsu8dmMocL-Tl0XlMvnIRp7MPXItEmkk_3kdBXLFEL90rgOarFa_QcbZ02gtam10qakO0ZtlGI29HFQqyJt3Htce2hai21oCBxqB3fKRtCoXhCYxL63M-KciFPo65FYdknk91qsQd0z0QPJPAix6TKB38joCZ8o3RHgovAS_FcxayiLK4LNzr4uQ0S4_vmjnQDNZJxQjunVnK2hpSyUARInAZzm2cN65R6Aj_6x6dC4Vg0wzMb5cz_3dEYEzg5eN2qx0MAZizx8OMpVGJy9l2Q9DiJiCXEI2BMpaBwJPy5UYSn2G5A5gWNxrzP3tuizlM9ihws5D9Ix8rcQTMOWVm0Jyeq1HwZI56Nwp2rLDu-y7JtV6oPXFvN7mbib7nEWrr2zMuiXebJJ8SryjtY6MGDx_C0JCrxxgSCRAnPucOMgDewcBerwBVykIdwnvqo14Z5A3B7dmEx4khjjmR4pHj1bhCFWeSs_RgYEjfSul2V7t9xH-xcimplm4qeioFLy6dU1lWGNq5XI7MDbNUew2AHE06jDQOuQljz8W0LdYjFJm4lvomaPonyjyw_1vC0Xt0mpfstJeUpUX-pHyMh51DVDqhyUXMeiFQDtbCnYWR5tWJMfIyMKD5bz02CyV9coL4SFdmnf7vynwhfANMpxeeww856MRehEq8R3n9BvIXzvM5DRp3vi3_KSotSX6el-I4dfHCVJ64_fvPFzdxT4etLzUp4ZudT6s6X5maGHTT6l9OD48Fjn17Q9-HOUnoSeRmTAvFRKCwlLkc6hNYuFC6EY6g5TYmmqx2b1kj31y-mDi4zSRzXYFGQIzNTbPRJliTv__agCe8VnOhx1AAQv9tJk1f-GYPWi9TLfByqyBCsnqG7pBb3qIeMKqqf_rV4lRXAUYamH7ogfcwelew1zsKaFoGOsets-_U44_nDv2hInLT9JUH60516z5Lm_mTntX1CNEi0JMhhD3E8ickvqYmQvpRGurL5hTffgxdaj8Rs5ms1DaIMmj8SZzU8qk0rdiy3LGLQnP_N3wA_CuY_v8sq5DzSRB3PNwgYYp1ekaR6Nohrcek9HTw3vtanVjB9KOU8G5i3ps_O0NQCHkZtc4Ck_rK6eYo5SwBcDRy1c4NxQPahWe0gnjak3ElhnXBRjyzo3nVbakQwDbtlszUKqhV_6ookQDMVvBQkmpReCjOcVH_byh-azJK-15UGTsKARGoeI401UcbcaSXVmA" nonce="5d3f8b015b3c461e7e664f533111ed24" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="1-watch.js"></script>
+    <link rel="stylesheet" type="text/css" href="1-watch.css">
+    <title>Watch</title>
+</head>
+
+<body>
+<div ng-app="watchDemo">
+  <div ng-controller="watchDemoCtrl" class="row">
+    <div class="col-md-6">
+      <h4 class="label-success white">$scope.$watch - Array</h4>
+      <button ng-click="push('X')" class="btn btn-primary btn-sm">Push</button>
+      <button ng-click="unshift('X')" class="btn btn-primary btn-sm">Unshift</button>
+      <button ng-click="replace('X')" class="btn btn-primary btn-sm">Replace</button>
+      <button ng-click="reset()" class="btn btn-warning btn-sm">Reset</button>
+    <div class="col-md-12">
+      <b class="red">[<span ng-repeat="letter in letters track by $index">{{letter}} </span>]</b>
+    </div>
+
+      <div class="col-md-12">[Updated: {{msg.time}}]<b>[Shallow watch]</b> letters: {{msg.content}}</div>
+      
+      <div class="col-md-12">[Updated: {{msg2.time}}]<b>[Deep watch]</b> letters: {{msg2.content}}</div>
+
+      <div class="col-md-12">[Updated: {{msg3.time}}]<b>[Watch letters[3]]</b> letters[3]: {{msg3.content}}</div>
+
+    </div>
+    <div class="col-md-6">  
+      <h4 class="label-success white">$scope.$watch - Object</h4>
+      <button ng-click="objReplace('a', 'X')" class="btn btn-primary btn-sm">Obj[a] change</button>
+
+      <button ng-click="objReplace('b.ba', 'X')" class="btn btn-primary btn-sm">Obj[b][ba] change</button>
+
+      <button ng-click="objReplace('b.ba.bab', 'X')" class="btn btn-primary btn-sm">Obj[b][ba][bab] change</button>
+
+      <button ng-click="objReplace('b.bb.0.bb1b', 'X')" class="btn btn-primary btn-sm">Obj[a][bb][0][bb1b] change</button>
+      <button ng-click="resetObj()" class="btn btn-warning btn-sm">Reset</button>
+      
+      <div class="col-md-12">
+        <span><b class="red">{{obj}}</b></span>
+      </div>
+
+      <div class="col-md-12">[Updated: {{msgObj1.time}}]<b>[Shallow Watch obj['a']]</b> obj['a']: {{msgObj1.content}}</div>
+      
+      <div class="col-md-12">[Updated: {{msgObj2.time}}]<b>[Watch obj['b']</b> obj['b']: {{msgObj2.content}}</div>     
+    </div>
+  </div>
+</div>
+</body>
+</html>
